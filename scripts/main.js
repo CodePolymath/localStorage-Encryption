@@ -1,6 +1,18 @@
 var passphrase;
 
 $(document).ready(function(){
+	var strItemName = 'encrypted-1';
+	var data = localStorage.getItem(strItemName);
+	var counter = 1;
+	var ulLocalStorage = $('#ulLocalStorage');
+	while (data) {
+		var newLI = document.createElement('li');
+		newLI.innerHTML = data;
+		ulLocalStorage.append(newLI);
+		counter +=1;
+		strItemName = strItemName.replace(/\d*$/,counter.toString());
+		data = localStorage.getItem(strItemName);
+	}
 	$('#btnSet').on('click',function(){
 		var username = $('#inpUserName1').val();
 		var password = $('#inpPassword1').val();
@@ -69,7 +81,7 @@ $(document).ready(function(){
 	$('#btnDecrypt').on('click',function(){
 		var username = $('#inpUserName2').val();
 		var password = $('#inpPassword2').val();
-		$('#ulLocalStorage2').html('');
+		var ulTarget = $('#ulLocalStorage2').html('');
 
 		if (username.length === 0 || password.length === 0){
 			alert('Please enter your UserName and Password');
@@ -102,14 +114,15 @@ $(document).ready(function(){
 
 		var decrypted = '';
 		var item = '';
+		var fragment = document.createDocumentFragment();
 		for (var i = 1; i < length; i++){
 			item = 'encrypted-' + i.toString();
 			decrypted = CryptoJS.AES.decrypt(localStorage.getItem(item), passphrase).toString(CryptoJS.enc.Utf8);
 			var newLI = document.createElement('li');
 			newLI.innerHTML = decrypted;
-			$('#ulLocalStorage2').append(newLI);
+			fragment.appendChild(newLI);
 		}
-
+		ulTarget.append(fragment);
 	});
 
 	$('#btnClearStorage').on('click',function(){
