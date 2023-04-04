@@ -1,6 +1,6 @@
 let passphrase;
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
 	let strItemName = 'encrypted-1';
 	let data = localStorage.getItem(strItemName);
 	let counter = 1;
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		setTimeout(() => {
 			span.classList.add('fadeOut');
 			setTimeout(() => {
-				span.classList.add('displayNone').classList.remove('fadeOut');
+				span.classList.replace('fadeOut', 'displayNone');
 			},2100);
 		},3000);
 		console._log(passphrase);
