@@ -2,6 +2,18 @@ body {
 	font-family: 'Trebuchet MS',Arial, sans-serif;
 }
 
+.container {
+	width: 100%;
+	overflow: hidden;
+	margin-top: 20px;
+}
+
+.column {
+	display: inline-block;
+	float: left;
+	width: 50%;
+}
+
 p {margin:2px auto 5px auto;}
 
 h1 {margin:0px auto 5px auto;}
@@ -62,6 +74,7 @@ button {
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:1px 1px 0px #7cacde;
+	margin: 3px;
 }
 
 button:hover {
@@ -72,6 +85,5 @@ button:hover {
 }
 
 button:active {
-	position:relative;
-	top:1px;
+	outline: 3px solid lightblue;
 }

@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		console._log(passphrase);
 
 		sessionStorage.setItem('passphrase', passphrase);
-		let encrypted = CryptoJS.AES.encrypt('SUCCESS!', passphrase).toString(); // a simple phrase used to text expected output of AES decryption
+		let encrypted = CryptoJS.AES.encrypt('SUCCESS!', passphrase).toString(); // a simple phrase used to test expected output of AES decryption
 		console._log(encrypted);
 
 		localStorage.setItem('itemKey',encrypted);
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			inpUserName2?.focus();
 			return;
 		}
-		if (testItem !== 'SUCCESS!') {
+		if (testItem !== 'SUCCESS!') { // encryption key (username/password) is not correct
 			alert('Sorry, that\'s not the correct UserName or Password. Please try again.');
 			inpUserName2?.focus();
 			return;
